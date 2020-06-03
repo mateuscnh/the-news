@@ -1,112 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap');
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-}
-
-body{
-    background-color: #f9f9f9;
-}
-
-.container{
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 2;
-    grid-template-rows: 2;
-}
-/*
-*
-* HEADER
-*
-*/
-header{
-    position: fixed;
-    width: 100%;
-    color: white;
-    height: 65px;
-    padding: 12px;
-    background-color: #c4170c;
-}
-
-#headerContent{
-    margin: auto;
-    max-width: 1300px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-}
-#headerContent p{
-    font-size: 16px;
-    padding: 12px;
-    font-weight: bold;
-    cursor: pointer;
-}
-#headerContent img{
-    position: absolute;
-    left: 48vw;
-    height: 30px;
-    margin-top: 8px;
-    cursor: pointer;
-}
-#headerContent #search{
-   width: 130px;
-   height: 35px;
-   margin: 5px;
-   background-color: rgba(0, 0,0, .15);
-   display: flex;
-   align-items: center;
-   border-radius: 3px;
-   transition: .2s;
-
-}
-#search p{
-    flex: 1;
-    text-align: center;
-    font-size: 15px;
-}
-#search input{
-    flex: 5;
-    height: 100%;
-    padding: 5px;
-    outline: none;
-    border: none;
-    background: none;
-    color: white;
-    font-weight: bold;
-    overflow: hidden;
-    text-align: left;
-    -webkit-text-fill-color: #fff;
-}
-/*
-*
-* NAVBAR
-*
-*/
-#navbar{
-    visibility: hidden;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0,0, .5);
-    position: fixed;  
-    transition: 1s;  
-}
-
-#nav{
-    width: 300px;
-    height: 100%;
-    background-color: #fff;
-    transition: .1s;
-}
-
-/*
-*
-* TOP NEWS
-*
-*/
 #topNews{
     grid-column: 1/3;
     margin-top: 100px;
@@ -119,7 +10,7 @@ header{
     height: 600px;
     border: 1px solid #ccc;
     border-radius: 5px;  
-    background: url('../images/bichos.jpg') no-repeat center;
+    background: url('../../images/bichos.jpg') no-repeat center;
     background-size: 115%;
     overflow: hidden; 
     cursor: pointer;
@@ -140,7 +31,7 @@ header{
 .big .contentNews h1{
     font-size: 40px;
     line-height: 45px;
-    color: #c4170c;
+    color: var(--primary-color);
     margin: 20px 0;
 }
 .big .newsWrap{
@@ -197,7 +88,7 @@ header{
 }
 .postWrap #textPost h1{
     font-size: 20px;
-    color: #c4170c;
+    color: var(--primary-color);
     margin: 10px 0;
     cursor: pointer;
 }
@@ -222,7 +113,7 @@ footer{
     max-height: 100px;
     padding: 18px;
     color: white;
-    background-color: #c4170c;
+    background-color: var(--primary-color);
 }
 
 footer img{
