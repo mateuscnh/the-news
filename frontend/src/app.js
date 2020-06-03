@@ -9,7 +9,6 @@ for (let index = 0; index < newsWrap.length; index++) {
     })
 }
 
-
 let inputSearch = document.getElementById('inputSearch');
 
 inputSearch.addEventListener('focus', () => {
