@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal</title>
-    <link rel="stylesheet" href="src/css/global.css">
-    <link rel="stylesheet" href="src/css/header.css">
-    <link rel="stylesheet" href="src/css/index.css">
+    <link rel="icon" href="./images/g1.png">
+    <title>G1 - O portal de notícias da Globo</title>
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="icon" href="./assets/g1.png">
 
     <script src="https://kit.fontawesome.com/7588e8cffb.js" crossorigin="anonymous"></script>
 </head>
@@ -16,7 +18,7 @@
     <header>
         <div id="headerContent">
             <p id="menu"><i class="fas fa-bars"></i> MENU</p>
-            <a href="index.html"><img src="images/g1-logo.png"></a>
+            <a href="index.html"><img src="./assets/g1-logo.png"></a>
             <div id="search">
                 <p><i class="fas fa-search"></i></p>
                 <input id="inputSearch" type="text" placeholder="BUSCAR">
@@ -33,7 +35,10 @@
                 <div class="newsWrap">
                     <div class="contentNews">
                         <p id="category">Política</p>
-                        <h1>Bolsonaro rebate STF, sobrevoa ato de apoio e participa de aglomeração em meio à pandemia
+                        <h1 onclick="newsClicked()">Bolsonaro rebate STF, sobrevoa ato de apoio e participa de
+                            aglomeração em
+                            meio à
+                            pandemia
                         </h1>
                         <p>Presidente publicou trecho de Lei de Abuso de Autoridade e, na manifestação, tirou a máscara,
                             abraçou apoiadores e carregou crianças no colo.</p>
@@ -61,49 +66,19 @@
                 </div>
             </div>
         </section>
-        <main id="main">
-            <div class="postWrap">
-                <div id="imgPost"></div>
-                <div id="textPost">
-                    <h1>EUA devem impedir entrada de brasileiros, diz conselheiro de Trump
-                    </h1>
-                    <p>'Esperamos que seja temporária', afirmou Robert O'Brien a canal de TV americano.</p>
-                    <p id="time">Há 50 minutos - Em mundo</p>
-                </div>
-            </div>
-            <div class="postWrap">
-                <div id="imgPost"></div>
-                <div id="textPost">
-                    <h1>Toffoli é internado, passa por cirurgia e apresenta sintomas de Covid-19
-                    </h1>
-                    <p>Presidente do STF passou por drenagem de abscesso e respira sem aparelhos, segundo nota do
-                        Supremo.</p>
-                    <p id="time">Há 37 minutos - Em Política</p>
-                </div>
-            </div>
-            <div class="postWrap">
-                <div id="imgPost"></div>
-                <div id="textPost">
-                    <h1>Secretário de vigilância do Ministério da Saúde anuncia que deixa cargo amanhã
-                    </h1>
-                    <p>Wanderson de Oliveira defende o isolamento social. Ministério não anunciou sucessor.</p>
-                    <p id="time">Há 4 horas - Em Coronavírus</p>
-                </div>
-            </div>
-        </main>
+        <main id="main"></main>
         <div id="asides">
             <aside></aside>
         </div>
     </div>
     <footer>
         <div id="footerContent">
-            <img src="images/g1-logo.png"> últimas notícias
+            <img src="./assets/g1-logo.png"> últimas notícias
             <p>© Copyright 2000-2020 Globo Comunicação e Participações S.A.</p>
         </div>
     </footer>
 
-    <script src="src/js/header.js"></script>
-    <script src="src/js/index.js"></script>
+    <script src="./bundle.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+body{
+    height: 100%;
+    background-color: #f9f9f9;
+}
+
+:root{
+    --primary-color: #c4170c;
+}
+
+
+footer{
+    max-height: 100px;
+    padding: 18px;
+    color: white;
+    background-color: var(--primary-color);
+}
+
+footer img{
+    height: 25px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+footer p{
+    margin: 5px 10px;
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+#footerContent{
+    margin: auto;
+    max-width: 1300px;
+}
