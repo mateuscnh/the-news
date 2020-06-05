@@ -1,3 +1,5 @@
+import '../css/header.css';
+
 function eventsHeader() {
     let menu = document.querySelector('#menu');
 

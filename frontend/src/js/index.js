@@ -1,4 +1,6 @@
 import eventsHeader from './header.js';
+import '../css/global.css';
+import '../css/index.css';
 eventsHeader();
 
 let newsWrap = document.getElementsByClassName('newsWrap');
