@@ -5,6 +5,7 @@ module.exports = {
     },
     output: {
         path: __dirname + '/public',
+        publicPath: '/',
         filename: '[name].js'
     },
     devServer: {
@@ -15,9 +16,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader'
-                }
+                loader: 'babel-loader'
             }
         ]
     }
