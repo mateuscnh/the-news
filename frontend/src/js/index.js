@@ -17,8 +17,7 @@ function renderNews(imagePath, textH1, textP, textTime) {
     let postWrap = document.createElement('div');
     postWrap.setAttribute('class', 'postWrap');
 
-    let imgPost = document.createElement('div');
-    imgPost.setAttribute('id', 'imgPost');
+    let imgPost = createSingleElement('div', 'id', 'imgPost');
     imgPost.setAttribute('style', "background: url(" + imagePath + ") center center / contain no-repeat");
     imgPost.addEventListener('click', newsClicked);
     postWrap.appendChild(imgPost);
@@ -50,8 +49,6 @@ function createSingleElement(tagName, atribute, nameAtribute) {
 }
 
 function newsClicked(event) {
-    console.log(event.path[1].children[0].innerHTML);
-
     window.location.assign("news.html");
 }
 

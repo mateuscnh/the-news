@@ -1,8 +1,11 @@
 module.exports = {
-    entry: ['@babel/polyfill', './src/js/index.js'],
+    entry: {
+        "index": './src/js/index.js',
+        "news": './src/js/news.js'
+    },
     output: {
         path: __dirname + '/public',
-        filename: 'bundle.js'
+        filename: '[name].js'
     },
     devServer: {
         contentBase: __dirname + '/public'
