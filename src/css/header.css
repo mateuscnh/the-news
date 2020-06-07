@@ -57,3 +57,50 @@ header{
     text-align: left;
     -webkit-text-fill-color: #fff;
 }
+/*
+* NAVBAR
+*/
+#navBar{
+    overflow-y: hidden;
+    position: relative;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: #ccc 0 2px 5px;
+    transition: .2s;
+}
+.navBarToggle{
+    visibility: hidden; 
+    width: 0;
+    height: 0;  
+}
+
+.navBarToggle2{
+    visibility: visible;
+    width: 220px;
+    height: 350px;
+}
+
+#navBar p{
+    margin: 30px 0;
+    font-weight: bold; 
+} 
+#navBar a{
+    font-size: 1.1rem;
+    list-style-type: none;
+    padding: 0 22px;
+    width: 100%;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: .2s;
+}
+#navBar a:hover{
+    font-size: 1.15rem;
+    opacity: .8;
+}
+
+@keyframes navBarAnimate{
+    from{
+        width: 0;
+        height: 0;
+    }
+}

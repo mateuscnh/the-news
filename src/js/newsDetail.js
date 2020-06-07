@@ -3,6 +3,7 @@ import '../css/global.css';
 import '../css/newsDetail.css';
 
 let article = JSON.parse(sessionStorage.getItem('article'));
+console.log(sessionStorage)
 renderNewsDetail();
 
 function renderNewsDetail() {

@@ -4,6 +4,7 @@ import '../css/global.css';
 import '../css/index.css';
 import api from './api';
 
+
 async function index() {
     let articlesDataBase = [];
     let articles = await api();
@@ -139,7 +140,7 @@ async function index() {
     function newsClicked(event) {
         let article = articlesDataBase[event.path[2].getAttribute('keyarticle')];
         sessionStorage.setItem('article', JSON.stringify(article));
-        window.location.assign(`news.html?title=${article.title}`);
+        location.assign(`news.html?title=${article.title}`);
     }
 }
 
