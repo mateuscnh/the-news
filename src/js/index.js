@@ -3,7 +3,6 @@ import "@babel/polyfill";
 import '../css/global.css';
 import '../css/index.css';
 import api from './api';
-import newsDetail from './newsDetail';
 
 async function index() {
     let articlesDataBase = [];
@@ -12,12 +11,13 @@ async function index() {
 
     function searchArticles() {
         for (const key in articles) {
-            const { title, description, content, publishedAt, urlToImage } = articles[key];
+            const { title, description, content, publishedAt, url, urlToImage } = articles[key];
             articlesDataBase.push({
                 title,
                 description,
                 content,
                 publishedAt,
+                url,
                 urlToImage
             });
             if (key == 0) {
@@ -99,7 +99,7 @@ async function index() {
 
     //"keyArticle" is the position  of the article in the "articlesDatabase"
     function renderNews(keyArticle, title, description, urlToImage, publishedAt) {
-        const main = document.getElementById('main');
+        const main = document.querySelector('main');
         let postWrapEl = document.createElement('div');
         postWrapEl.setAttribute('class', 'postWrap');
         postWrapEl.setAttribute('keyArticle', keyArticle);
@@ -137,7 +137,9 @@ async function index() {
     }
 
     function newsClicked(event) {
-        newsDetail(articlesDataBase[event.path[2].getAttribute('keyarticle')]);
+        let article = articlesDataBase[event.path[2].getAttribute('keyarticle')];
+        sessionStorage.setItem('article', JSON.stringify(article));
+        window.location.assign(`news.html?title=${article.title}`);
     }
 }
 

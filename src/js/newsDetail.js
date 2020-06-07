@@ -2,29 +2,47 @@ import './header';
 import '../css/global.css';
 import '../css/newsDetail.css';
 
-function newsDetail(article) {
-    console.log(article)
-    //window.location.assign("news.html");
-    function renderNewsDetail() {
-        let main = document.querySelector('main');
+let article = JSON.parse(sessionStorage.getItem('article'));
+renderNewsDetail();
 
-    }
+function renderNewsDetail() {
+
+    let mainEl = document.querySelector('main');
+
+    let containerEl = createSingleElement('div', 'id', 'container');
+
+    let contentHeadEl = createSingleElement('div', 'class', 'content-head');
+    let titleEl = createSingleElement('h1', '', '');
+    titleEl.innerHTML = article.title;
+    contentHeadEl.appendChild(titleEl);
+    let descriptionEl = createSingleElement('p', '', '');
+    descriptionEl.innerHTML = article.description;
+    contentHeadEl.appendChild(descriptionEl);
+
+    let contentTextEl = createSingleElement('div', 'class', 'content-text');
+    let imgEl = createSingleElement('img', 'src', article.urlToImage);
+    contentTextEl.appendChild(imgEl);
+    let contentEl = createSingleElement('p', '', '');
+    contentEl.innerHTML = article.content;
+    contentTextEl.appendChild(contentEl);
+    let completeNews = createSingleElement('a', 'href', article.url);
+    completeNews.setAttribute('target', '_blank');
+    completeNews.innerHTML = '<p>LER MATÉRIA COMPLETA</p>';
+    contentTextEl.appendChild(completeNews);
+
+    containerEl.appendChild(contentHeadEl);
+    containerEl.appendChild(contentTextEl);
+
+    mainEl.appendChild(containerEl);
+
 }
 
-export default newsDetail;
+function createSingleElement(tagName, attribute, nameAttribute) {
+    let elem = document.createElement(tagName);
+    if ((attribute == '') && (nameAttribute === '')) return elem;
+    elem.setAttribute(attribute, nameAttribute);
+    return elem;
+}
 
-{/* <div id="container">
-    <div class="content-head_container">
-        <h1>Brazil at Silicon Valley discute o futuro da saúde nesta quarta; acompanhe agora</h1>
-        <p>Presidente da Baxter Pharmaceuticals, Sumant Ramachandra, e especialistas da Universidade de Stanford
-                    debatem como a tecnologia e a inovação vão impulsionar o futuro da saúde no Brasil e no mundo.</p>
-    </div>
-    <div class="content-text_container">
-        <p>O Brazil at Silicon Valley <strong>discute</strong> nesta quarta-feira (3) como a tecnologia e a
-                    inovação vão
-                    influenciar o futuro da saúde no Brasil e no mundo.
 
-                    A partir das 20h, o Google for Startups apresenta um relatório sobre o atual ecossistema de inovação
-                    no Brasil e as previsões para a indústria de tecnologia brasileira nos próximos anos.</p>
-    </div>
-</div> */}
+

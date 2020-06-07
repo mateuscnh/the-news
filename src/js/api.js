@@ -25,13 +25,14 @@ async function api(topic = '', page = 1) {
             return response.json();
         }).then(data => {
             for (const key in data.articles) {
-                const { title, description, content, publishedAt, urlToImage } = data.articles[key];
+                const { title, description, content, publishedAt, url, urlToImage } = data.articles[key];
 
                 articles.push({
                     title,
                     description,
                     content,
                     publishedAt,
+                    url,
                     urlToImage
                 });
             }
