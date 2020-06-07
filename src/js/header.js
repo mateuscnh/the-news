@@ -3,17 +3,6 @@ import '../css/header.css';
 function eventsHeader() {
     let menu = document.querySelector('#menu');
 
-    let navBar = document.querySelector('#navbar');
-    menu.addEventListener('click', () => {
-        document.body.style.overflow = 'hidden';
-        navBar.style.visibility = 'visible';
-    });
-
-    navBar.addEventListener('click', () => {
-        navBar.style.visibility = 'hidden';
-        document.body.style.overflow = 'visible';
-    });
-
     let inputSearch = document.querySelector('#inputSearch');
     let search = document.querySelector('#search');
 
@@ -26,4 +15,4 @@ function eventsHeader() {
     }, true)
 }
 
-export default eventsHeader;
+export default eventsHeader();

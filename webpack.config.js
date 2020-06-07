@@ -1,12 +1,9 @@
 module.exports = {
-    entry: {
-        "index": './src/js/index.js',
-        "news": './src/js/news.js'
-    },
+    entry: ["@babel/polyfill", './src/js/index.js'],
     output: {
         path: __dirname + '/public',
         publicPath: '/',
-        filename: '[name].js'
+        filename: 'index.js'
     },
     devServer: {
         contentBase: __dirname + '/public'
@@ -21,16 +18,6 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
-            },
-            {
-                test: /\.(png|jpg)$/,
-                use: {
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: 'assets/'
-                    }
-                }
             }
         ]
     }
