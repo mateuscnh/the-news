@@ -18,10 +18,10 @@ async function api(topic = '', category = '', page = 1) {
                 const { title, description, content, publishedAt, url, urlToImage } = data.articles[key];
                 try {
                     if ((urlToImage.indexOf('filters') != -1)) {
-                        continue;
+                        urlToImage = urlToImage.replace("filters:cover():strip_icc()/", "");
                     }
                 } catch (err) {
-                    console.log('Error :=' + err.message);
+                    continue;
                 }
 
                 articles.push({
