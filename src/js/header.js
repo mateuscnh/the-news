@@ -1,31 +1,42 @@
 import '../css/header.css';
 
-function eventsHeader() {
-    let menu = document.querySelector('#menu');
+let menu = document.querySelector('#menu');
 
-    let cont = 0;
-    menu.addEventListener('click', () => {
-        let navBarEl = document.querySelector('#navBar');
-        if ((cont % 2) == 0) {
-            navBarEl.classList.remove('navBarToggle');
-            navBarEl.classList.add('navBarToggle2');
-        } else {
-            navBarEl.classList.remove('navBarToggle2');
-            navBarEl.classList.add('navBarToggle');
-        }
-        cont++;
-    });
+let cont = 0;
+let navBarEl = document.querySelector('#navBar');
+menu.addEventListener('click', () => {
+    if ((cont % 2) == 0) {
+        navBarEl.classList.remove('navBarToggle');
+        navBarEl.classList.add('navBarToggle2');
+    } else {
+        navBarEl.classList.remove('navBarToggle2');
+        navBarEl.classList.add('navBarToggle');
+    }
+    cont++;
+});
 
-    let inputSearch = document.querySelector('#inputSearch');
-    let search = document.querySelector('#search');
+navBarEl.onmouseleave = () => {
+    navBarEl.classList.remove('navBarToggle2');
+    navBarEl.classList.add('navBarToggle');
+};
 
-    inputSearch.addEventListener('focus', () => {
-        search.style.width = '230px';
-    }, true)
+navBarEl.addEventListener('click', () => {
+    navBarEl.classList.remove('navBarToggle2');
+    navBarEl.classList.add('navBarToggle');
+})
 
-    inputSearch.addEventListener('blur', () => {
-        search.style.width = '130px';
-    }, true)
-}
+let inputSearch = document.querySelector('#inputSearch');
+let search = document.querySelector('#search');
 
-export default eventsHeader();
+inputSearch.addEventListener('focus', () => {
+    search.style.width = '230px';
+}, true)
+
+inputSearch.addEventListener('blur', () => {
+    search.style.width = '130px';
+}, true)
+
+
+
+
+

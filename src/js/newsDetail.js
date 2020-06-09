@@ -3,7 +3,7 @@ import '../css/global.css';
 import '../css/newsDetail.css';
 
 let article = JSON.parse(sessionStorage.getItem('article'));
-console.log(sessionStorage)
+
 renderNewsDetail();
 
 function renderNewsDetail() {
@@ -19,6 +19,9 @@ function renderNewsDetail() {
     let descriptionEl = createSingleElement('p', '', '');
     descriptionEl.innerHTML = article.description;
     contentHeadEl.appendChild(descriptionEl);
+    let publishedAtEl = createSingleElement('p', '', '');
+    publishedAtEl.innerHTML = article.publishedAt;
+    contentHeadEl.appendChild(publishedAtEl);
 
     let contentTextEl = createSingleElement('div', 'class', 'content-text');
     let imgEl = createSingleElement('img', 'src', article.urlToImage);

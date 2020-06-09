@@ -5,63 +5,19 @@
     grid-template-columns: 2;
     grid-template-rows: 2;
 }
-
-#topNews{
+#slideShow{
     grid-column: 1/3;
-    margin-top: 100px;
-    margin-bottom: 20px;
-    height: 620px;
-    display: flex;
-}
-.contentNews{
-    margin: 10px;
+    margin-top: 65px;
+    width: 100%;
     height: 600px;
-    border: 1px solid #ccc;
-    border-radius: 5px; 
-    overflow: hidden; 
-    background: #fff;
-    color: #fff;
-    cursor: pointer;
-    transition: .3s;
-    box-shadow: 0 2px 5px #ccc;
-}
-#big{
-    width: 50%;
-}
-#big .contentNews{
-    color: #333;
-    padding: 30px;
-    justify-content: flex-start;
-}
-#big .contentNews h1{
-    font-size: 40px;
-    line-height: 45px;
-    color: var(--primary-color);
-    margin: 20px 0;
-    margin-top: 120px;
-}
-#little{
-    width: 50%;
-    height: 100%;
-    display: inline-flex;
-    flex-direction: column;
-}
-#little .contentNews{
-    height: 100%;
-    color: #fff;
-      
-}
-.blackOpacity{
-    height: 100%;
-    padding: 30px;
-    background-color: rgba(17, 14, 14, .6);
+    background-color: #111;
 }
 /*
 *
 * POSTS
 *
 */
-#main{
+main{
     grid-column: 1/2;
     padding: 12px -50px;
     margin: 10px 0;

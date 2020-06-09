@@ -1,23 +1,13 @@
-async function api(topic = '', page = 1) {
+async function api(topic = '', category = '', page = 1) {
     let apiKey = '655d56f1d9524f9f832ec33a65a74eb6';
     let articles = [];
-    let url = '';
-    const deu = {};
+    let url = `http://newsapi.org/v2/top-headlines?country=br&apiKey=${apiKey}&page=${page}`;
 
-    if (topic === '') {
-        url = 'http://newsapi.org/v2/everything?' +
-            'sources=globo&' +
-            'sortBy=popularity&' +
-            `apiKey=${apiKey}&` +
-            `page=${page}`;
-    } else {
-        url = 'http://newsapi.org/v2/everything?' +
-            'sources=globo&' +
-            'from=2020-06-06&' +
-            `q=${topic}&` +
-            'sortBy=popularity&' +
-            `apiKey=${apiKey}` +
-            `page=${page}`;
+    if (topic != '') {
+        url = `http://newsapi.org/v2/everything?q=${topic}&sortBy=popularity&apiKey=${apiKey}&page=${page}`;
+    }
+    if (category != '') {
+        url = `http://newsapi.org/v2/top-headlines?country=br&category=${category}&apiKey=${apiKey}&page=${page}`;
     }
 
     await fetch(url)
@@ -26,6 +16,13 @@ async function api(topic = '', page = 1) {
         }).then(data => {
             for (const key in data.articles) {
                 const { title, description, content, publishedAt, url, urlToImage } = data.articles[key];
+                try {
+                    if ((urlToImage.indexOf('filters') != -1)) {
+                        continue;
+                    }
+                } catch (err) {
+                    console.log('Error :=' + err.message);
+                }
 
                 articles.push({
                     title,
