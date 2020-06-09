@@ -1,5 +1,5 @@
 async function api(topic = '', category = '', page = 1) {
-    let apiKey = '655d56f1d9524f9f832ec33a65a74eb6';
+    const apiKey = '655d56f1d9524f9f832ec33a65a74eb6';
     let articles = [];
     let url = `http://newsapi.org/v2/top-headlines?country=br&apiKey=${apiKey}&page=${page}`;
 
@@ -18,14 +18,17 @@ async function api(topic = '', category = '', page = 1) {
                 const { title, description, content, publishedAt, url, urlToImage } = data.articles[key];
                 try {
                     if ((urlToImage.indexOf('filters') != -1)) {
+                        // With this "filters..." the image does not load
                         urlToImage = urlToImage.replace("filters:cover():strip_icc()/", "");
                     }
                 } catch (err) {
                     console.log(err)
                     continue;
                 }
+
                 content = treatContent(content);
                 publishedAt = treatDate(publishedAt);
+
                 articles.push({
                     title,
                     description,
@@ -35,7 +38,6 @@ async function api(topic = '', category = '', page = 1) {
                     urlToImage
                 });
             }
-            console.log(data.totalResults);
         });
 
     return articles;
@@ -52,9 +54,14 @@ function treatDate(date) {
 
 function treatContent(content) {
     // ex: [+1254 chars]
-    let newContent = content.split('[+');
-    newContent = newContent[0];
-    return newContent;
+    try {
+        let newContent = content.split('[+');
+        newContent = newContent[0];
+        return newContent;
+    } catch (err) {
+        console.log(err)
+        return content;
+    }
 }
 
 export default api;

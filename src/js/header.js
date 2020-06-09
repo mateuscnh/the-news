@@ -1,9 +1,9 @@
 import '../css/header.css';
 
-let menu = document.querySelector('#menu');
+const menu = document.querySelector('#menu');
 
 let cont = 0;
-let navBarEl = document.querySelector('#navBar');
+const navBarEl = document.querySelector('#navBar');
 menu.addEventListener('click', () => {
     if ((cont % 2) == 0) {
         navBarEl.classList.remove('navBarToggle');
@@ -26,8 +26,8 @@ navBarEl.addEventListener('click', () => {
     navBarEl.classList.add('navBarToggle');
 })
 
-let inputSearch = document.querySelector('#inputSearch');
-let search = document.querySelector('#search');
+const inputSearch = document.querySelector('#inputSearch');
+const search = document.querySelector('#search');
 
 inputSearch.addEventListener('focus', () => {
     search.style.width = '230px';

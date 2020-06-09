@@ -1,6 +1,7 @@
 //"keyArticle" is the position  of the article in the "articlesDatabase"
 function renderNews(keyArticle, title, description, urlToImage, publishedAt, newsClicked) {
     const main = document.querySelector('main');
+
     let postWrapEl = document.createElement('div');
     postWrapEl.setAttribute('class', 'postWrap');
     postWrapEl.setAttribute('keyArticle', keyArticle);
@@ -27,6 +28,7 @@ function renderNews(keyArticle, title, description, urlToImage, publishedAt, new
     textPostEl.appendChild(timeEl);
 
     postWrapEl.appendChild(textPostEl);
+
     main.appendChild(postWrapEl);
 }
 

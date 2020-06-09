@@ -55,17 +55,18 @@ main{
     font-weight: bold;
     margin-top: 16px;
 }
-
-#asides{
-    grid-column: 2;
-    width: 400px;
-    padding: 12px;
-    margin: 10px 0 10px 10px;
-    background-color: #fff;
-    border-radius: 5px; 
-    border: 1px solid #ccc;
-    overflow: hidden;
-    box-shadow: 0 2px 5px #ccc;
+/*
+* SEARCH NOT FOUND
+*/
+#notFound{
+    margin: 0 auto;
+    position: absolute;
+    text-align: center;
+    top: 50%; 
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: var(--primary-color);
+    font-size: 25px;
 }
 
 

@@ -1,13 +1,14 @@
 import './header';
 import '../css/global.css';
 import '../css/newsDetail.css';
+import treatCategory from './util/treatCategory';
 
-let article = JSON.parse(sessionStorage.getItem('article'));
+const article = JSON.parse(sessionStorage.getItem('article'));
 
 renderNewsDetail();
 
 function renderNewsDetail() {
-    let category = document.querySelectorAll('#navBar p');
+    const category = document.querySelectorAll('#navBar p');
     for (let index = 0; index < category.length; index++) {
         category[index].addEventListener('click', categoryClicked);
     }
@@ -16,32 +17,32 @@ function renderNewsDetail() {
         document.title = 'theNews - ' + sessionStorage.getItem('title');
     };
 
-    let mainEl = document.querySelector('main');
+    const mainEl = document.querySelector('main');
 
-    let containerEl = createSingleElement('div', 'id', 'container');
+    const containerEl = createSingleElement('div', 'id', 'container');
 
-    let contentHeadEl = createSingleElement('div', 'class', 'content-head');
-    let titleEl = createSingleElement('h1', '', '');
+    const contentHeadEl = createSingleElement('div', 'class', 'content-head');
+    const titleEl = createSingleElement('h1', '', '');
     titleEl.innerHTML = article.title;
     contentHeadEl.appendChild(titleEl);
-    let descriptionEl = createSingleElement('p', '', '');
+    const descriptionEl = createSingleElement('p', '', '');
     descriptionEl.innerHTML = article.description;
     contentHeadEl.appendChild(descriptionEl);
-    let publishedAtEl = createSingleElement('p', '', '');
+    const publishedAtEl = createSingleElement('p', '', '');
     publishedAtEl.setAttribute('id', 'date');
     publishedAtEl.innerHTML = article.publishedAt;
     contentHeadEl.appendChild(publishedAtEl);
 
-    let contentTextEl = createSingleElement('div', 'class', 'content-text');
-    let imgEl = createSingleElement('img', 'src', article.urlToImage);
+    const contentTextEl = createSingleElement('div', 'class', 'content-text');
+    const imgEl = createSingleElement('img', 'src', article.urlToImage);
     contentTextEl.appendChild(imgEl);
-    let contentEl = createSingleElement('p', '', '');
+    const contentEl = createSingleElement('p', '', '');
     contentEl.innerHTML = article.content;
     contentTextEl.appendChild(contentEl);
-    let completeNews = createSingleElement('a', 'href', article.url);
-    completeNews.setAttribute('target', '_blank');
-    completeNews.innerHTML = '<p>LER MATÉRIA COMPLETA</p>';
-    contentTextEl.appendChild(completeNews);
+    const compconsteNews = createSingleElement('a', 'href', article.url);
+    compconsteNews.setAttribute('target', '_blank');
+    compconsteNews.innerHTML = '<p>LER MATÉRIA COMPLETA</p>';
+    contentTextEl.appendChild(compconsteNews);
 
     containerEl.appendChild(contentHeadEl);
     containerEl.appendChild(contentTextEl);
@@ -50,7 +51,7 @@ function renderNewsDetail() {
 }
 
 function createSingleElement(tagName, attribute, nameAttribute) {
-    let elem = document.createElement(tagName);
+    const elem = document.createElement(tagName);
     if ((attribute == '') && (nameAttribute === '')) return elem;
     elem.setAttribute(attribute, nameAttribute);
     return elem;
@@ -58,30 +59,10 @@ function createSingleElement(tagName, attribute, nameAttribute) {
 
 function categoryClicked(event) {
     window.scrollTo(0, 0);
-    let category = event.path[0].innerHTML;
 
-    switch (category) {
-        case 'NEGÓCIOS':
-            category = 'business';
-            break;
-        case 'ENTRETENIMENTO':
-            category = 'entertainment';
-            break;
-        case 'SAÚDE':
-            category = 'health';
-            break;
-        case 'CIÊNCIAS':
-            category = 'science';
-            break;
-        case 'ESPORTES':
-            category = 'sports';
-            break;
-        case 'TECNOLOGIA':
-            category = 'technology';
-            break;
-        default:
-            category = '';
-    }
+    let category = event.path[0].innerHTML;
+    category = treatCategory(category);
+
     window.location = `index.html?category=${category}`;
 }
 

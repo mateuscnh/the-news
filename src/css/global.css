@@ -10,6 +10,7 @@
 body{
     height: 100%;
     background-color: #f9f9f9;
+    animation: animateBody .5s linear;
 }
 
 :root{
@@ -39,4 +40,12 @@ footer p{
     justify-content: center;
     margin: auto;
     max-width: 1300px;
+}
+
+@keyframes animateBody{
+    from{
+        opacity: .5;
+    } to{
+        opacity: 1;
+    }
 }

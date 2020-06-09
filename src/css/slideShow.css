@@ -1,5 +1,5 @@
 #slideShow{
-  margin-top: 65px;
+  margin-top: 65px; 
 }
 #contentSlider{
     padding: 20px;
@@ -46,10 +46,4 @@
   
   .active, .dot:hover {
     opacity: 1;
-  }
-
-
-  @keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
   }
