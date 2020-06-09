@@ -38,8 +38,12 @@ inputSearch.addEventListener('blur', () => {
 }, true)
 
 inputSearch.addEventListener('keypress', (event) => {
-    if (event.keyCode == 13) console.log('é')
+    if (event.keyCode == 13) {
+        window.location = `index.html?topic=${inputSearch.value}`;
+    }
 })
+
+
 
 
 

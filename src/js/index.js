@@ -27,14 +27,17 @@ function eventsIndex() {
         dots[index].onclick = () => { currentSlide(index + 1); }
     }
 
-    window.onpageshow = async () => {
-        await searchArticles();
-        showSlides(1);
-        setInterval(plusSlides, 4000);
-    }
     window.onload = async () => {
         await extractSearchURL('');
-        await searchArticles('', dataSearch.category);
+        if ((dataSearch.category == undefined) && (dataSearch.topic == undefined)) {
+            await searchArticles();
+        } else if (dataSearch.category != undefined) {
+            await searchArticles('', dataSearch.category);
+        } else {
+            await searchArticles(dataSearch.topic);
+        }
+        showSlides(1);
+        setInterval(plusSlides, 4000);
     }
 }
 
@@ -142,6 +145,7 @@ async function categoryClicked(event) {
     }
     window.location = `index.html?category=${category}`;
     articlesDataBase = [];
+    dataSearch = {};
     await extractSearchURL('');
     searchArticles('', dataSearch.category);
 }
