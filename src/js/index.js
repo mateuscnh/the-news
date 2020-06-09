@@ -3,7 +3,8 @@ import "@babel/polyfill";
 import '../css/global.css';
 import '../css/slideShow.css';
 import '../css/index.css';
-import api from './api';
+import api from './services/api';
+import renderNews from './util/renderNews';
 
 let articlesDataBase = [];
 let articles;
@@ -18,9 +19,6 @@ function eventsIndex() {
         category[index].addEventListener('click', categoryClicked);
     }
 
-    // Slide Show
-    document.querySelector('#prev').onclick = () => plusSlides(-1);
-    document.querySelector('#next').onclick = () => plusSlides(1);
     document.querySelector('#slideShow').addEventListener('click', newsClicked, true);
 
     let dots = document.querySelectorAll(".dot");
@@ -48,7 +46,7 @@ function showSlides(n) {
     let numSlides = 3;
     let slideShow = document.querySelector('#slideShow');
     let slideTitle = document.querySelector('#slideShow h1');
-    slideShow.setAttribute('keyArticle', 0);
+    slideShow.setAttribute('keyArticle', slideIndex - 1);
     let slideDescription = document.querySelector('#slideShow p');
     let dots = document.querySelectorAll(".dot");
 
@@ -79,44 +77,8 @@ async function searchArticles(topic = '', category = '', page = 1) {
             url,
             urlToImage
         });
-        if (key >= 3) renderNews(key, title, description, urlToImage, publishedAt);
+        if (key >= 3) renderNews(key, title, description, urlToImage, publishedAt, newsClicked);
     }
-}
-//"keyArticle" is the position  of the article in the "articlesDatabase"
-function renderNews(keyArticle, title, description, urlToImage, publishedAt) {
-    let postWrapEl = document.createElement('div');
-    postWrapEl.setAttribute('class', 'postWrap');
-    postWrapEl.setAttribute('keyArticle', keyArticle);
-
-    let imgEl = createSingleElement('div', 'id', 'imgPost');
-    imgEl.setAttribute('style', "background: url(" + urlToImage + ") center center / contain no-repeat");
-    postWrapEl.appendChild(imgEl);
-
-    let textPostEl = createSingleElement('div', 'id', 'textPost');
-
-    let titleEl = document.createElement('h1');
-    titleEl.addEventListener('click', newsClicked);
-    titleEl.innerHTML = title;
-
-    let descriptionEl = document.createElement('p');
-    descriptionEl.innerHTML = description;
-
-    let timeEl = createSingleElement('p', 'id', 'time');
-    timeEl.innerHTML = publishedAt;
-
-    textPostEl.appendChild(titleEl);
-    textPostEl.appendChild(descriptionEl);
-    textPostEl.appendChild(timeEl);
-
-    postWrapEl.appendChild(textPostEl);
-    main.appendChild(postWrapEl);
-}
-
-function createSingleElement(tagName, attribute, nameAttribute) {
-    let elem = document.createElement(tagName);
-    if ((attribute == '') && (nameAttribute === '')) return elem;
-    elem.setAttribute(attribute, nameAttribute);
-    return elem;
 }
 
 function newsClicked(event) {
