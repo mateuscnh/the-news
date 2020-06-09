@@ -7,9 +7,9 @@
 }
 #slideShow{
     grid-column: 1/3;
-    margin-top: 65px;
+    margin-top: 65  px;
     width: 100%;
-    height: 600px;
+    height: 560px;
     background-color: #111;
 }
 /*
@@ -37,7 +37,6 @@ main{
     width: 360px;
     height: 212px;
     overflow: hidden;
-    cursor: pointer;
 }
 .postWrap #textPost{
     width: 420px;

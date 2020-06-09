@@ -1,12 +1,14 @@
 import './header';
 import "@babel/polyfill";
 import '../css/global.css';
+import '../css/slideShow.css';
 import '../css/index.css';
 import api from './api';
 
 let articlesDataBase = [];
 let articles;
 const main = document.querySelector('main');
+let slideIndex = 1;
 
 eventsIndex();
 
@@ -16,8 +18,52 @@ function eventsIndex() {
         category[index].addEventListener('click', categoryClicked);
     }
 
-    window.pageshow = searchArticles();
+    // Slide Show
+    document.querySelector('#prev').onclick = () => plusSlides(-1);
+    document.querySelector('#next').onclick = () => plusSlides(1);
+    document.querySelector('#slideShow').addEventListener('click', newsClicked, true);
+
+    let dots = document.querySelectorAll(".dot");
+    for (let index = 0; index < dots.length; index++) {
+        dots[index].onclick = () => { currentSlide(index + 1); }
+    }
+
+    window.onpageshow = async () => {
+        await searchArticles();
+        showSlides(1);
+        setInterval(plusSlides, 4000);
+    }
 }
+
+
+function plusSlides(n = 1) {
+    showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    let numSlides = 3;
+    let slideShow = document.querySelector('#slideShow');
+    let slideTitle = document.querySelector('#slideShow h1');
+    slideShow.setAttribute('keyArticle', 0);
+    let slideDescription = document.querySelector('#slideShow p');
+    let dots = document.querySelectorAll(".dot");
+
+    if (n > numSlides) { slideIndex = 1 }
+    if (n < 1) { slideIndex = numSlides }
+
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slideTitle.innerHTML = articlesDataBase[slideIndex - 1].title;
+    slideDescription.innerHTML = articlesDataBase[slideIndex - 1].description;
+    slideShow.setAttribute('style', "background: url(" + articlesDataBase[slideIndex - 1].urlToImage + ") center top / cover no-repeat");
+    dots[slideIndex - 1].className += " active";
+}
+//
 
 async function searchArticles(topic = '', category = '', page = 1) {
     main.innerHTML = '';
@@ -33,7 +79,7 @@ async function searchArticles(topic = '', category = '', page = 1) {
             url,
             urlToImage
         });
-        renderNews(key, title, description, urlToImage, publishedAt);
+        if (key >= 3) renderNews(key, title, description, urlToImage, publishedAt);
     }
 }
 //"keyArticle" is the position  of the article in the "articlesDatabase"
@@ -44,7 +90,6 @@ function renderNews(keyArticle, title, description, urlToImage, publishedAt) {
 
     let imgEl = createSingleElement('div', 'id', 'imgPost');
     imgEl.setAttribute('style', "background: url(" + urlToImage + ") center center / contain no-repeat");
-    imgEl.addEventListener('click', newsClicked);
     postWrapEl.appendChild(imgEl);
 
     let textPostEl = createSingleElement('div', 'id', 'textPost');
@@ -109,6 +154,7 @@ function categoryClicked(event) {
         default:
             category = '';
     }
+    articlesDataBase = [];
     searchArticles('', category);
 }
 

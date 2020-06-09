@@ -18,6 +18,7 @@ menu.addEventListener('click', () => {
 navBarEl.onmouseleave = () => {
     navBarEl.classList.remove('navBarToggle2');
     navBarEl.classList.add('navBarToggle');
+    cont++;
 };
 
 navBarEl.addEventListener('click', () => {
