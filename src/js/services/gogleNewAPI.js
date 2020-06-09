@@ -22,7 +22,7 @@ async function api(topic = '', category = '', page = 1) {
                         urlToImage = urlToImage.replace("filters:cover():strip_icc()/", "");
                     }
                 } catch (err) {
-                    console.log(err)
+                    console.log(err);
                     continue;
                 }
 
