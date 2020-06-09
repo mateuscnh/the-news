@@ -13,7 +13,7 @@ function renderNewsDetail() {
     }
 
     window.onload = () => {
-        document.title = 'G1 - ' + sessionStorage.getItem('title');
+        document.title = 'theNews - ' + sessionStorage.getItem('title');
     };
 
     let mainEl = document.querySelector('main');
@@ -28,6 +28,7 @@ function renderNewsDetail() {
     descriptionEl.innerHTML = article.description;
     contentHeadEl.appendChild(descriptionEl);
     let publishedAtEl = createSingleElement('p', '', '');
+    publishedAtEl.setAttribute('id', 'date');
     publishedAtEl.innerHTML = article.publishedAt;
     contentHeadEl.appendChild(publishedAtEl);
 

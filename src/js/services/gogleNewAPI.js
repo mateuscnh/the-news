@@ -24,6 +24,7 @@ async function api(topic = '', category = '', page = 1) {
                     console.log(err)
                     continue;
                 }
+                content = treatContent(content);
                 publishedAt = treatDate(publishedAt);
                 articles.push({
                     title,
@@ -34,6 +35,7 @@ async function api(topic = '', category = '', page = 1) {
                     urlToImage
                 });
             }
+            console.log(data.totalResults);
         });
 
     return articles;
@@ -46,6 +48,13 @@ function treatDate(date) {
     newDate = newDate.replace('-', '/');
     newDate = newDate.replace('-', '/');
     return newDate;
+}
+
+function treatContent(content) {
+    // ex: [+1254 chars]
+    let newContent = content.split('[+');
+    newContent = newContent[0];
+    return newContent;
 }
 
 export default api;

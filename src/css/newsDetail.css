@@ -28,9 +28,11 @@
     letter-spacing: -0.5px;
     text-align: left;
     padding-bottom: 20px;
-    margin: 20px 0;
+    margin: 10px 0;
 }
-
+.content-head #date{
+    font-weight: bold;
+}
 .content-text{
     max-width: 680px;
     height: 100%;

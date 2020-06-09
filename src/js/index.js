@@ -8,9 +8,9 @@ import renderNews from './util/renderNews';
 
 let articlesDataBase = [];
 let articles;
-const main = document.querySelector('main');
 let slideIndex = 1;
 let dataSearch = {};
+const main = document.querySelector('main');
 
 eventsIndex();
 

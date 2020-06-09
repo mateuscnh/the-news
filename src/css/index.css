@@ -37,6 +37,7 @@ main{
     width: 360px;
     height: 212px;
     overflow: hidden;
+    cursor: pointer;
 }
 .postWrap #textPost{
     width: 420px;

@@ -7,6 +7,7 @@ function renderNews(keyArticle, title, description, urlToImage, publishedAt, new
 
     let imgEl = createSingleElement('div', 'id', 'imgPost');
     imgEl.setAttribute('style', "background: url(" + urlToImage + ") center center / contain no-repeat");
+    imgEl.addEventListener('click', newsClicked);
     postWrapEl.appendChild(imgEl);
 
     let textPostEl = createSingleElement('div', 'id', 'textPost');
