@@ -49,9 +49,10 @@ main{
     margin: 10px 0;
     cursor: pointer;
 }
-.postWrap #textPost #time{
+.postWrap #textPost #date{
     font-size: 14px;
-    margin-top: 10px;
+    font-weight: bold;
+    margin-top: 16px;
 }
 
 #asides{

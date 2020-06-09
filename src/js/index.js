@@ -3,7 +3,7 @@ import "@babel/polyfill";
 import '../css/global.css';
 import '../css/slideShow.css';
 import '../css/index.css';
-import api from './services/api';
+import gogleNewAPI from './services/gogleNewAPI';
 import renderNews from './util/renderNews';
 
 let articlesDataBase = [];
@@ -37,7 +37,7 @@ function eventsIndex() {
             await searchArticles(dataSearch.topic);
         }
         showSlides(1);
-        setInterval(plusSlides, 4000);
+        setInterval(plusSlides, 6000);
     }
 }
 
@@ -80,7 +80,7 @@ function showSlides(n) {
 
 async function searchArticles(topic = '', category = '', page = 1) {
     main.innerHTML = '';
-    articles = await api(topic, category, page);
+    articles = await gogleNewAPI(topic, category, page);
 
     for (const key in articles) {
         const { title, description, content, publishedAt, url, urlToImage } = articles[key];

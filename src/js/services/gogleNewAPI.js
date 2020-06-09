@@ -24,6 +24,7 @@ async function api(topic = '', category = '', page = 1) {
                     console.log(err)
                     continue;
                 }
+                publishedAt = treatDate(publishedAt);
                 articles.push({
                     title,
                     description,
@@ -36,6 +37,15 @@ async function api(topic = '', category = '', page = 1) {
         });
 
     return articles;
+}
+
+function treatDate(date) {
+    //date from API (2020-06-09T17:10:04Z)
+    let newDate = date.split('T');
+    newDate = newDate[0];
+    newDate = newDate.replace('-', '/');
+    newDate = newDate.replace('-', '/');
+    return newDate;
 }
 
 export default api;

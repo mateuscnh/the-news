@@ -14,7 +14,7 @@
 }
 
 .content-head h1{
-    color: #111;
+    color: var(--primary-color);
     font-size: 56px;
     line-height: 64px;
     letter-spacing: -2.5px;
@@ -58,13 +58,14 @@
 
 .content-text a p{
     color: var(--primary-color);
+    opacity: .5;
     font-weight: bold;
     transition: .2s;
     text-align: center;
 }
 .content-text a p:hover{ 
     font-size: 21px;
-    color: rgb(243, 3, 3);
+    opacity: 1;
 }
 
 .content-text img{

@@ -18,7 +18,7 @@ function renderNews(keyArticle, title, description, urlToImage, publishedAt, new
     let descriptionEl = document.createElement('p');
     descriptionEl.innerHTML = description;
 
-    let timeEl = createSingleElement('p', 'id', 'time');
+    let timeEl = createSingleElement('p', 'id', 'date');
     timeEl.innerHTML = publishedAt;
 
     textPostEl.appendChild(titleEl);

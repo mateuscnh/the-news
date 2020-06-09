@@ -23,7 +23,8 @@ header{
 }
 #headerContent img{
     position: absolute;
-    left: 48vw;
+    left: 50%;
+    transform: translateX(-50%);
     height: 30px;
     margin-top: 8px;
     cursor: pointer;
