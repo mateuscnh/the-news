@@ -8,6 +8,10 @@ renderNewsDetail();
 
 function renderNewsDetail() {
 
+    window.onload = () => {
+        document.title = 'G1 - ' + sessionStorage.getItem('title');
+    };
+
     let mainEl = document.querySelector('main');
 
     let containerEl = createSingleElement('div', 'id', 'container');

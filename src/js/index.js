@@ -77,7 +77,10 @@ function createSingleElement(tagName, attribute, nameAttribute) {
 function newsClicked(event) {
     let article = articlesDataBase[event.path[2].getAttribute('keyarticle')];
     sessionStorage.setItem('article', JSON.stringify(article));
-    location.assign(`news.html?title=${article.title}`);
+    let title = article.title;
+    sessionStorage.setItem('title', title);
+    title = title.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    location.assign(`news.html?title=${title}`);
 }
 
 function categoryClicked(event) {
