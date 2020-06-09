@@ -23,7 +23,6 @@ async function api(topic = '', category = '', page = 1) {
                 } catch (err) {
                     continue;
                 }
-
                 articles.push({
                     title,
                     description,
