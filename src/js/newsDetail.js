@@ -7,6 +7,10 @@ let article = JSON.parse(sessionStorage.getItem('article'));
 renderNewsDetail();
 
 function renderNewsDetail() {
+    let category = document.querySelectorAll('#navBar p');
+    for (let index = 0; index < category.length; index++) {
+        category[index].addEventListener('click', categoryClicked);
+    }
 
     window.onload = () => {
         document.title = 'G1 - ' + sessionStorage.getItem('title');
@@ -42,7 +46,6 @@ function renderNewsDetail() {
     containerEl.appendChild(contentTextEl);
 
     mainEl.appendChild(containerEl);
-
 }
 
 function createSingleElement(tagName, attribute, nameAttribute) {
@@ -51,6 +54,36 @@ function createSingleElement(tagName, attribute, nameAttribute) {
     elem.setAttribute(attribute, nameAttribute);
     return elem;
 }
+
+function categoryClicked(event) {
+    window.scrollTo(0, 0);
+    let category = event.path[0].innerHTML;
+
+    switch (category) {
+        case 'NEGÓCIOS':
+            category = 'business';
+            break;
+        case 'ENTRETENIMENTO':
+            category = 'entertainment';
+            break;
+        case 'SAÚDE':
+            category = 'health';
+            break;
+        case 'CIÊNCIAS':
+            category = 'science';
+            break;
+        case 'ESPORTES':
+            category = 'sports';
+            break;
+        case 'TECNOLOGIA':
+            category = 'technology';
+            break;
+        default:
+            category = '';
+    }
+    window.location = `index.html?category=${category}`;
+}
+
 
 
 

@@ -10,6 +10,7 @@ let articlesDataBase = [];
 let articles;
 const main = document.querySelector('main');
 let slideIndex = 1;
+let dataSearch = {};
 
 eventsIndex();
 
@@ -31,8 +32,19 @@ function eventsIndex() {
         showSlides(1);
         setInterval(plusSlides, 4000);
     }
+    window.onload = async () => {
+        await extractSearchURL('');
+        await searchArticles('', dataSearch.category);
+    }
 }
 
+function extractSearchURL() {
+    let partes = location.search.slice(1).split('&');
+    let chaveValor = partes[0].split('=');
+    let chave = chaveValor[0];
+    let valor = chaveValor[1];
+    dataSearch[chave] = valor;
+}
 
 function plusSlides(n = 1) {
     showSlides(slideIndex += n);
@@ -82,7 +94,19 @@ async function searchArticles(topic = '', category = '', page = 1) {
 }
 
 function newsClicked(event) {
-    let article = articlesDataBase[event.path[2].getAttribute('keyarticle')];
+    try {
+        let article = articlesDataBase[event.path[2].getAttribute('keyarticle')];
+        sessionStorage.setItem('article', JSON.stringify(article));
+        let title = article.title;
+        sessionStorage.setItem('title', title);
+        title = title.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        location.assign(`news.html?title=${title}`);
+    } catch (err) {
+        topNewsClicked(event);
+    }
+}
+function topNewsClicked(event) {
+    let article = articlesDataBase[event.path[1].getAttribute('keyarticle')];
     sessionStorage.setItem('article', JSON.stringify(article));
     let title = article.title;
     sessionStorage.setItem('title', title);
@@ -90,7 +114,7 @@ function newsClicked(event) {
     location.assign(`news.html?title=${title}`);
 }
 
-function categoryClicked(event) {
+async function categoryClicked(event) {
     window.scrollTo(0, 0);
     let category = event.path[0].innerHTML;
 
@@ -116,8 +140,10 @@ function categoryClicked(event) {
         default:
             category = '';
     }
+    window.location = `index.html?category=${category}`;
     articlesDataBase = [];
-    searchArticles('', category);
+    await extractSearchURL('');
+    searchArticles('', dataSearch.category);
 }
 
 

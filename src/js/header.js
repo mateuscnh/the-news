@@ -37,6 +37,10 @@ inputSearch.addEventListener('blur', () => {
     search.style.width = '130px';
 }, true)
 
+inputSearch.addEventListener('keypress', (event) => {
+    if (event.keyCode == 13) console.log('é')
+})
+
 
 
 
