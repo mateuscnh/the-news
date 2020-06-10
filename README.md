@@ -2,10 +2,10 @@
 A news finder using the Google News API. The API developer license only allows "locahost" requests.
 
 ## Home Page
-<img src="./gitHub-images/index.png” width="500">
+![image](gitHub-images/index.png)
 
 ## Page with more details about certain news
-<img src=”./gitHub-images/newsDetail.png” width="500">
+![image](gitHub-images/newsDetail.png)
 
 ### Used babel and webpack
 
