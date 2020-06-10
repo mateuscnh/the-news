@@ -1,5 +1,5 @@
 # The News
-A news finder using the Google News API. The API developer license only allows "locahost" requests.
+A news finder using the Google News API. The API developer license only allows "locahost" requests. Design inspirate in page "G1" from "g1.globo.com".
 
 ## Home Page
 ![image](gitHub-images/index.png)
